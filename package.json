@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-pages",
+  "version": "1.0.0",
+  "description": "Developer & Architect Portfolio",
+  "scripts": {
+    "build": "vite build",
+    "watch": "tsc --watch",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0"
+  },
+  "author": "Gürkan Indibay",
+  "license": "MIT"
+}

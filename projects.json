@@ -1,0 +1,17 @@
+{
+  "projects": [
+    "iot-data-processor",
+    "azure-communications",
+    "auto_cv",
+    "n8n-blog-degest",
+    "simple-chat-rag",
+    "collectionApp",
+    "dff_project",
+    "udemy-go-tryout",
+    "JavaTryout",
+    "IngHubsProject",
+    "ticketingsystem",
+    "pg_multitenant",
+    "packaging"
+  ]
+}
