@@ -1,17 +1,20 @@
 {
   "projects": [
     "iot-data-processor",
-    "azure-communications",
+    "azure_communications",
     "auto_cv",
-    "n8n-blog-degest",
-    "simple-chat-rag",
-    "collectionApp",
+    "n8n-blog-digest",
+    "simple_chat_rag",
+    "CollectionApp",
     "dff_project",
     "udemy-go-tryout",
-    "JavaTryout",
+    "JavaTryouts",
     "IngHubsProject",
     "ticketingsystem",
     "pg_multitenant",
-    "packaging"
+    "packaging",
+    "CodingChallenges",
+    "citus-chat-bot",
+    "pg_multitenant"
   ]
 }
