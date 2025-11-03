@@ -12,4 +12,6 @@ export const CONFIG: Config = {
     featuredRepos: [],
     // Path to projects JSON file
     projectsFile: 'projects.json',
+    // Path to filters JSON file
+    filtersFile: 'filters.json',
 };

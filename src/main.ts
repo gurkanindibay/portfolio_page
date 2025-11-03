@@ -2,7 +2,7 @@
 import { ThemeManager } from './theme';
 import { GitHubPortfolio } from './portfolio';
 import { CONFIG } from './config';
-import type { FilterType } from './types';
+import type { FiltersData, FilterData } from './types';
 
 // ==================== Smooth Scrolling ====================
 function initializeSmoothScrolling(): void {
@@ -23,6 +23,34 @@ function initializeSmoothScrolling(): void {
     });
 }
 
+// ==================== Load Filters ====================
+async function loadFilters(): Promise<FilterData[]> {
+    try {
+        const response = await fetch(CONFIG.filtersFile);
+        if (response.ok) {
+            const data: FiltersData = await response.json();
+            return data.filters || [];
+        }
+    } catch (error) {
+        console.warn('Could not load filters.json, using default filters:', error);
+    }
+    // Default filters
+    return [
+        { name: 'All', value: 'all' },
+        { name: 'Featured', value: 'featured' }
+    ];
+}
+
+// ==================== Create Filter Buttons ====================
+function createFilterButtons(filters: FilterData[]): void {
+    const filterContainer = document.querySelector('.projects-filter');
+    if (!filterContainer) return;
+
+    filterContainer.innerHTML = filters.map((filter, index) => `
+        <button class="filter-btn${index === 0 ? ' active' : ''}" data-filter="${filter.value}">${filter.name}</button>
+    `).join('');
+}
+
 // ==================== Initialize Portfolio ====================
 const portfolio = new GitHubPortfolio(CONFIG.githubUsername);
 
@@ -30,6 +58,10 @@ async function initializePortfolio(): Promise<void> {
     try {
         // Load the projects list from JSON file first
         await portfolio.loadProjectsList();
+        // Load filters
+        const filters = await loadFilters();
+        // Create filter buttons
+        createFilterButtons(filters);
         // Then fetch and display projects
         const projects = await portfolio.fetchProjects();
         portfolio.renderProjects(projects);
@@ -58,7 +90,7 @@ function setupFilterButtons(): void {
             button.classList.add('active');
             
             // Filter and render projects
-            const filter = button.getAttribute('data-filter') as FilterType;
+            const filter = button.getAttribute('data-filter') as string;
             const filtered = portfolio.filterProjects(filter);
             portfolio.renderProjects(filtered);
         });

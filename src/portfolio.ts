@@ -1,12 +1,12 @@
 // ==================== GitHub Projects Fetcher ====================
-import type { Project, GitHubRepo, ProjectsData, LanguageColors, FilterType } from './types';
+import type { Project, GitHubRepo, ProjectsData, LanguageColors, FilterType, ProjectData } from './types';
 import { CONFIG } from './config';
 
 export class GitHubPortfolio {
     private username: string;
     private projects: Project[] = [];
     private filteredProjects: Project[] = [];
-    private includeOnlyRepos: string[] = [];
+    private includeOnlyProjects: ProjectData[] = [];
 
     constructor(username: string) {
         this.username = username;
@@ -17,11 +17,11 @@ export class GitHubPortfolio {
             const response = await fetch(CONFIG.projectsFile);
             if (response.ok) {
                 const data: ProjectsData = await response.json();
-                this.includeOnlyRepos = data.projects || [];
+                this.includeOnlyProjects = data.projects || [];
             }
         } catch (error) {
             console.warn('Could not load projects.json, showing all repositories:', error);
-            this.includeOnlyRepos = [];
+            this.includeOnlyProjects = [];
         }
     }
 
@@ -42,26 +42,30 @@ export class GitHubPortfolio {
                 repo => !repo.fork && !CONFIG.excludeRepos.includes(repo.name)
             );
             
-            // If includeOnlyRepos is specified and not empty, only show those repos
-            if (this.includeOnlyRepos && this.includeOnlyRepos.length > 0) {
+            // If includeOnlyProjects is specified and not empty, only show those repos
+            if (this.includeOnlyProjects && this.includeOnlyProjects.length > 0) {
                 filteredRepos = filteredRepos.filter(repo => 
-                    this.includeOnlyRepos.includes(repo.name)
+                    this.includeOnlyProjects.map(p => p.name).includes(repo.name)
                 );
             }
 
             this.projects = filteredRepos
-                .map(repo => ({
-                    name: repo.name,
-                    description: repo.description || 'No description available',
-                    url: repo.html_url,
-                    homepage: repo.homepage,
-                    stars: repo.stargazers_count,
-                    forks: repo.forks_count,
-                    language: repo.language,
-                    topics: repo.topics || [],
-                    updated: new Date(repo.updated_at),
-                    isFeatured: CONFIG.featuredRepos.includes(repo.name)
-                }))
+                .map(repo => {
+                    const projectData = this.includeOnlyProjects.find(p => p.name === repo.name);
+                    const additionalTopics = projectData?.technologies || [];
+                    return {
+                        name: repo.name,
+                        description: repo.description || 'No description available',
+                        url: repo.html_url,
+                        homepage: repo.homepage,
+                        stars: repo.stargazers_count,
+                        forks: repo.forks_count,
+                        language: repo.language,
+                        topics: [...(repo.topics || []), ...additionalTopics],
+                        updated: new Date(repo.updated_at),
+                        isFeatured: CONFIG.featuredRepos.includes(repo.name)
+                    };
+                })
                 .sort((a, b) => {
                     // Sort featured projects first
                     if (a.isFeatured && !b.isFeatured) return -1;
@@ -89,6 +93,8 @@ export class GitHubPortfolio {
             this.filteredProjects = [...this.projects];
         } else if (filter === 'featured') {
             this.filteredProjects = this.projects.filter(project => project.isFeatured);
+        } else {
+            this.filteredProjects = this.projects.filter(project => project.topics.includes(filter));
         }
         return this.filteredProjects;
     }
@@ -137,7 +143,7 @@ export class GitHubPortfolio {
                 ` : ''}
                 ${project.topics.length > 0 ? `
                     <div class="project-topics">
-                        ${project.topics.slice(0, 5).map(topic => `
+                        ${project.topics.map(topic => `
                             <span class="topic-tag">${this.escapeHtml(topic)}</span>
                         `).join('')}
                     </div>

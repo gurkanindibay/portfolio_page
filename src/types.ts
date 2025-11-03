@@ -6,10 +6,16 @@ export interface Config {
     excludeRepos: string[];
     featuredRepos: string[];
     projectsFile: string;
+    filtersFile: string;
 }
 
 export interface ProjectsData {
-    projects: string[];
+    projects: ProjectData[];
+}
+
+export interface ProjectData {
+    name: string;
+    technologies?: string[];
 }
 
 export interface GitHubRepo {
@@ -40,7 +46,14 @@ export interface Project {
     isFeatured: boolean;
 }
 
-export type FilterType = 'all' | 'featured';
+export interface FilterData {
+    name: string;
+    value: string;
+}
+
+export interface FiltersData {
+    filters: FilterData[];
+}
 
 export interface LanguageColors {
     [key: string]: string;

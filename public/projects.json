@@ -1,20 +1,60 @@
 {
   "projects": [
-    "iot-data-processor",
-    "azure_communications",
-    "auto_cv",
-    "n8n-blog-digest",
-    "simple_chat_rag",
-    "CollectionApp",
-    "dff_project",
-    "udemy-go-tryout",
-    "JavaTryouts",
-    "IngHubsProject",
-    "ticketingsystem",
-    "pg_multitenant",
-    "packaging",
-    "CodingChallenges",
-    "citus-chat-bot",
-    "pg_multitenant"
+    {
+      "name": "iot-data-processor",
+      "technologies": ["Azure IOT Hub", "Azure Functions"]
+    },
+    {
+      "name": "azure_communications",
+      "technologies": ["Azure Communication Services"]
+    },
+    {
+      "name": "auto_cv"
+    },
+    {
+      "name": "n8n-blog-digest"
+    },
+    {
+      "name": "simple_chat_rag",
+      "technologies": ["Langchain", "OpenAI", "PostgreSQL","Docker","Pg_vector"]
+    },
+    {
+      "name": "CollectionApp",
+      "technologies": ["React", "MsSql", ".Net Core"]
+    },
+    {
+      "name": "dff_project",
+      "technologies": ["NextJs", ".Net Core"]
+    },
+    {
+      "name": "udemy-go-tryout"
+    },
+    {
+      "name": "JavaTryouts",
+      "technologies": ["maven","kafka","Spring Boot","PostgreSQL","Docker","Open Telemetry","Prometheus","Logstash","Kubernetes","Tempo","ElasticSearch","Kibana","Alertmanager"]
+    },
+    {
+      "name": "IngHubsProject",
+      "technologies": ["Spring Boot", "Spring Security", "Logstash","Github Actions","Docker"]
+    },
+    {
+      "name": "ticketingsystem",
+      "technologies": [".NET 9", "PostgreSQL", "Redis","RabbitMQ","Entity Framework Core","Docker"]
+    },
+    {
+      "name": "pg_multitenant",
+      "technologies": ["PostgreSQL"]
+    },
+    {
+      "name": "packaging",
+      "technologies": ["PostgreSQL"]
+    },
+    {
+      "name": "CodingChallenges"
+    },
+    {
+      "name": "citus-chat-bot",
+      "technologies": ["PostgreSQL","Milvus"]
+    }
   ]
 }

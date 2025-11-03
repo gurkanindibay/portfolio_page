@@ -1,0 +1,132 @@
+{
+  "filters": [
+    {
+      "name": "All",
+      "value": "all"
+    },
+    {
+      "name": "Featured",
+      "value": "featured"
+    },
+    {
+      "name": "Alertmanager",
+      "value": "Alertmanager"
+    },
+    {
+      "name": "Azure Communication Services",
+      "value": "Azure Communication Services"
+    },
+    {
+      "name": "Azure Functions",
+      "value": "Azure Functions"
+    },
+    {
+      "name": "Azure IOT Hub",
+      "value": "Azure IOT Hub"
+    },
+    {
+      "name": "Docker",
+      "value": "Docker"
+    },
+    {
+      "name": "ElasticSearch",
+      "value": "ElasticSearch"
+    },
+    {
+      "name": "Entity Framework Core",
+      "value": "Entity Framework Core"
+    },
+    {
+      "name": "Github Actions",
+      "value": "Github Actions"
+    },
+    {
+      "name": "Kibana",
+      "value": "Kibana"
+    },
+    {
+      "name": "Kubernetes",
+      "value": "Kubernetes"
+    },
+    {
+      "name": "Langchain",
+      "value": "Langchain"
+    },
+    {
+      "name": "Logstash",
+      "value": "Logstash"
+    },
+    {
+      "name": "maven",
+      "value": "maven"
+    },
+    {
+      "name": "Milvus",
+      "value": "Milvus"
+    },
+    {
+      "name": "MsSql",
+      "value": "MsSql"
+    },
+    {
+      "name": "NextJs",
+      "value": "NextJs"
+    },
+    {
+      "name": "Open Telemetry",
+      "value": "Open Telemetry"
+    },
+    {
+      "name": "OpenAI",
+      "value": "OpenAI"
+    },
+    {
+      "name": "Pg_vector",
+      "value": "Pg_vector"
+    },
+    {
+      "name": "PostgreSQL",
+      "value": "PostgreSQL"
+    },
+    {
+      "name": "Prometheus",
+      "value": "Prometheus"
+    },
+    {
+      "name": "RabbitMQ",
+      "value": "RabbitMQ"
+    },
+    {
+      "name": "React",
+      "value": "React"
+    },
+    {
+      "name": "Redis",
+      "value": "Redis"
+    },
+    {
+      "name": "Spring Boot",
+      "value": "Spring Boot"
+    },
+    {
+      "name": "Spring Security",
+      "value": "Spring Security"
+    },
+    {
+      "name": "Tempo",
+      "value": "Tempo"
+    },
+    {
+      "name": "kafka",
+      "value": "kafka"
+    },
+    {
+      "name": ".NET 9",
+      "value": ".NET 9"
+    },
+    {
+      "name": ".Net Core",
+      "value": ".Net Core"
+    }
+  ]
+}
